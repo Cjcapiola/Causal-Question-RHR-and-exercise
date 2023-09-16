@@ -36,6 +36,8 @@ The data set used for this project can be downloaded from the link below:
 
 ### Data Preprocessing
 
+The data set includes variables that are recorded as yes or no, for the purposes of easy data processing, these variables must be altered to reflect binary values that can be easily analyzed.
+
 ```python
 # Code for data preprocessing
 nhanes_data['Smoking'] = nhanes_data['Smoking'].map({'No': 0, 'Yes': 1})
@@ -46,9 +48,18 @@ nhanes_data['Anti_Hypertensive'] = nhanes_data['Anti_Hypertensive'].map({'No': 0
 
 ### Data Distribution
 
+To provide a better understanding of what this data distibution looks like, the data can be plotted as histograms.
 ```python
 # Histogram code
 sns.histplot(nhanes_data['Cardio_Duration'], bins=30, kde=True)
+sns.histplot(nhanes_data['Change_in_Heart_Rate'], bins=30, kde=True)
+sns.histplot(nhanes_data['Smoking'], bins=30, kde=True)
+sns.histplot(nhanes_data['Systolic_BP'], bins=30, kde=True)
+sns.histplot(nhanes_data['Diastolic_BP'], bins=30, kde=True)
+sns.histplot(nhanes_data['Caffeine_Usage_mg'], bins=30, kde=True)
+sns.histplot(nhanes_data['Anti_Hypertensive'], bins=30, kde=True)
+sns.histplot(nhanes_data['Fasting_Blood_Sugar'], bins=30, kde=True)	
+
 ```
 
 ### Pairwise Relationships
