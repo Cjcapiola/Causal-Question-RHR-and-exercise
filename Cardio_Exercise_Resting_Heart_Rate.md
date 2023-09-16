@@ -82,10 +82,17 @@ It can be seen that the values collected for Cardio Duration, Change in RHR, Blo
 
 ### Pairwise Relationships
 
+By plotting each of the possible variables against RHR changes, we can visualize possible relationships between potential confounders and colliders.
+
 ```python
 # Pairplot code
 sns.pairplot(nhanes_data[numerical_columns], kind='scatter', diag_kind='kde')
 ```
+
+![Master Scatterplot](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/master_scatterplot_image.png)
+
+
+
 
 ## Methodology
 
