@@ -28,27 +28,27 @@ The data utilized in this analysis originates from the National Health and Nutri
 
 ### Data Preprocessing
 
-\```python
+```python
 # Code for data preprocessing
 nhanes_data['Smoking'] = nhanes_data['Smoking'].map({'No': 0, 'Yes': 1})
 nhanes_data['Anti_Hypertensive'] = nhanes_data['Anti_Hypertensive'].map({'No': 0, 'Yes': 1})
-\```
+```
 
 ## Exploratory Data Analysis (EDA)
 
 ### Data Distribution
 
-\```python
+```python
 # Histogram code
 sns.histplot(nhanes_data['Cardio_Duration'], bins=30, kde=True)
-\```
+```
 
 ### Pairwise Relationships
 
-\```python
+```python
 # Pairplot code
 sns.pairplot(nhanes_data[numerical_columns], kind='scatter', diag_kind='kde')
-\```
+```
 
 ## Methodology
 
@@ -62,11 +62,11 @@ The model was implemented using Python's scikit-learn library.
 	ext{Change\_in\_Heart\_Rate} = \beta_0 + \beta_1 \times 	ext{Cardio\_Duration} + \beta_2 \times 	ext{Systolic\_BP} + \ldots
 \]
 
-\```python
+```python
 # Code to perform multiple linear regression
 model = LinearRegression()
 model.fit(X_train, y_train)
-\```
+```
 
 ### Confounding Variables
 
@@ -86,21 +86,21 @@ model.fit(X_train, y_train)
 - **Diastolic_BP**: \(-0.002\)
 - **Intercept**: \(8.72\)
 
-\```python
+```python
 # Code snippet to extract coefficients
 model.coef_, model.intercept_
-\```
+```
 
 ### Model Evaluation
 
 - **MSE**: \(1.55\)
 - **\( R^2 \)**: \(0.90\)
 
-\```python
+```python
 # Code to calculate MSE and R2
 mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
-\```
+```
 
 ## Discussion
 
