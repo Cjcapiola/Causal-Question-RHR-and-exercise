@@ -62,6 +62,22 @@ sns.histplot(nhanes_data['Fasting_Blood_Sugar'], bins=30, kde=True)
 
 ```
 
+![Cardio Duration](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Cardio_Duration_histogram.png)
+
+![Change in Heart Rate](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Change_in_Heart_Rate_histogram.png)
+
+![Smoking](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Smoking_histogram.png)
+
+![Systolic BP](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Systolic_BP_histogram.png)
+
+![Diastolic BP](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Diastolic_BP_histogram.png)
+
+![Caffeine Usage (mg)](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Caffeine_Usage_mg_histogram.png)
+
+![Anti-Hypertensive](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Anti_Hypertensive_histogram.png)
+
+![Fasting Blood Sugar](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Fasting_Blood_Sugar_histogram.png)
+
 ### Pairwise Relationships
 
 ```python
