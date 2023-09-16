@@ -78,6 +78,7 @@ sns.histplot(nhanes_data['Fasting_Blood_Sugar'], bins=30, kde=True)
 
 ![Fasting Blood Sugar](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/Fasting_Blood_Sugar_histogram.png)
 
+It can be seen that the values collected for Cardio Duration, Change in RHR, Blood Pressure, and Blood Sugar follow an approximatley normal distribution, while Caffiene Usage is heavily right tailed.
 ### Pairwise Relationships
 
 ```python
