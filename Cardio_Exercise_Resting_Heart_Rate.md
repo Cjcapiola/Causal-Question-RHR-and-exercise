@@ -86,7 +86,13 @@ By plotting each of the possible variables against RHR changes, we can visualize
 
 ```python
 # Pairplot code
-sns.pairplot(nhanes_data[numerical_columns], kind='scatter', diag_kind='kde')
+sns.pairplot(nhanes_data[Change in Heart Rate vs Smoking], kind='scatter', diag_kind='kde')
+sns.pairplot(nhanes_data[Change in Heart Rate vs Systolic BP], kind='scatter', diag_kind='kde')
+sns.pairplot(nhanes_data[Change in Heart Rate vs Diastolic BP], kind='scatter', diag_kind='kde')
+sns.pairplot(nhanes_data[Change in Heart Rate vs Caffeine Usage (mg)], kind='scatter', diag_kind='kde')
+sns.pairplot(nhanes_data[Change in Heart Rate vs Anti-Hypertensive], kind='scatter', diag_kind='kde')
+sns.pairplot(nhanes_data[Change in Heart Rate vs Fasting Blood Sugar], kind='scatter', diag_kind='kde')
+
 ```
 
 ![Master Scatterplot](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/master_scatterplot_image.png)
