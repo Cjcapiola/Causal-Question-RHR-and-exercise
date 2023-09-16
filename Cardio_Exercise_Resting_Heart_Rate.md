@@ -3,7 +3,10 @@
 
 ## Abstract
 
-This paper aims to quantitatively investigate the effect of the duration of moderate-intensity cardiovascular exercise on an individual's resting heart rate. Using data from the National Health and Nutrition Examination Survey (NHANES), a multiple linear regression model was developed to analyze this relationship while controlling for confounding variables. The study reveals a statistically significant negative correlation between exercise duration and resting heart rate.
+Cardiovascular exercise is widely recognized for its beneficial effects on longevity and overall health, a view supported by recommendations from the Centers for Disease Control and Prevention (CDC), which advise adults aged 18 and older to engage in at least 150 minutes of moderate-intensity cardiovascular activity per week. However, these guidelines are based on broad epidemiological studies that may not account for individual variations. One potentially important biometric indicator of longevity and cardiovascular health is an individual's resting heart rate. Despite its significance, the direct relationship between the duration of moderate-intensity cardiovascular exercise and its impact on resting heart rate has not been quantified in the absence of confounding variables. This paper looks to define a relationship between time spent undergoing cardiovascular activity and resting heart rate in order to provide a more concrete biometric based recommendation for moderate-intensity cardiovascular exercise duration.  Using data sets from the National Health and Nutrition Examination Survey (NHANES) we will be able to extract resting heart rates and average duration of moderate-intensity cardiovascular exercise and define a relationship between the two that will enable an individual to use their current resting heart rate and generate a weekly cardiovascular duration that will allow them to lower their resting heart rate to a range that is optimal for longevity. 
+RESULTS
+CONCLUSION
+
 
 ## Introduction
 
