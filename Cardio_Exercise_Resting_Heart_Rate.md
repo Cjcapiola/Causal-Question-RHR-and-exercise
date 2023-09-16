@@ -3,9 +3,7 @@
 
 ## Abstract
 
-Cardiovascular exercise is widely recognized for its beneficial effects on longevity and overall health, a view supported by recommendations from the Centers for Disease Control and Prevention (CDC), which advise adults aged 18 and older to engage in at least 150 minutes of moderate-intensity cardiovascular activity per week. However, these guidelines are based on broad epidemiological studies that may not account for individual variations. One potentially important biometric indicator of longevity and cardiovascular health is an individual's resting heart rate. Despite its significance, the direct relationship between the duration of moderate-intensity cardiovascular exercise and its impact on resting heart rate has not been quantified in the absence of confounding variables. This paper looks to define a relationship between time spent undergoing cardiovascular activity and resting heart rate in order to provide a more concrete biometric based recommendation for moderate-intensity cardiovascular exercise duration.  Using data sets from the National Health and Nutrition Examination Survey (NHANES) we will be able to extract resting heart rates and average duration of moderate-intensity cardiovascular exercise and define a relationship between the two that will enable an individual to use their current resting heart rate and generate a weekly cardiovascular duration that will allow them to lower their resting heart rate to a range that is optimal for longevity. 
-RESULTS
-CONCLUSION
+Cardiovascular exercise is widely recognized for its beneficial effects on longevity and overall health, a view supported by recommendations from the Centers for Disease Control and Prevention (CDC), which advise adults aged 18 and older to engage in at least 150 minutes of moderate-intensity cardiovascular activity per week. However, these guidelines are based on broad epidemiological studies that may not account for individual variations. One potentially important biometric indicator of longevity and cardiovascular health is an individual's resting heart rate. Despite its significance, the direct relationship between the duration of moderate-intensity cardiovascular exercise and its impact on resting heart rate has not been quantified in the absence of confounding variables. This paper looks to define a relationship between time spent undergoing cardiovascular activity and resting heart rate in order to provide a more concrete biometric based recommendation for moderate-intensity cardiovascular exercise duration.  Using data sets from the National Health and Nutrition Examination Survey (NHANES) we will be able to extract resting heart rates and average duration of moderate-intensity cardiovascular exercise and define a relationship between the two that will enable an individual to use their current resting heart rate and generate a weekly cardiovascular duration that will allow them to lower their resting heart rate to a range that is optimal for longevity. The model provided a high notable R^2 value of 0.90, indicating a strong fit to the data. For an average person in our dataset, approximately 16.06 minutes of moderate-intensity cardiovascular exercise is estimated to be required to lower the resting heart rate from 74 to 68 beats per minute. The results suggest that individualized cardio duration recommendations could be more effective than general guidelines. Lowering the resting heart rate from 74 to 68 bpm is associated with a 28% reduction in all-cause mortality risk, making this a significant public health finding. Our study demonstrates the potential for data-driven, personalized health recommendations but should be interpreted with caution as it cannot replace professional medical advice.
 
 
 ## Introduction
@@ -129,38 +127,66 @@ The R Squared score is quite high, indicating a good fit of the model to the dat
 
 ## Results
 
-### Model Coefficients
+The exact results of this model are shown:
+
+**Cardio_Duration**: A negative coefficient suggests that as the duration of cardiovascular exercise increases, the change in heart rate is more likely to decrease (indicating a potentially lower resting heart rate). Specifically, for each additional minute of exercise, the change in heart rate is expected to decrease by approximately 0.17 units.
+**Systolic_BP & Diastolic_BP**: These have small coefficients, suggesting a minor influence on the change in heart rate.
+**Caffeine_Usage_mg**: A small positive coefficient suggests that increased caffeine usage could slightly increase the change in heart rate, but the effect is minimal.
+**Fasting_Blood_Sugar**: A small positive coefficient indicates a minor impact on the change in heart rate.
+**Smoking**: A positive coefficient of 0.13 indicates that smoking could result in a less negative or a more positive change in heart rate.
+**Anti_Hypertensive**: A negative coefficient suggests that using anti-hypertensive medication is associated with a decrease in the change in heart rate, potentially indicating a lower resting heart rate.
+
+To purify the model we can extract only the coefficents that provide a impactful change on the final variable and therefore simplify the model for ease of use.
 
 - **Cardio_Duration**: \(-0.17\)
 - **Systolic_BP**: \(0.0043\)
 - **Diastolic_BP**: \(-0.002\)
 - **Intercept**: \(8.72\)
 
-```python
-# Code snippet to extract coefficients
-model.coef_, model.intercept_
-```
-
-### Model Evaluation
-
-- **MSE**: \(1.55\)
-- **\( R^2 \)**: \(0.90\)
-
-```python
-# Code to calculate MSE and R2
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-```
+Using these values we can use the model to predict changes in heart rate based on any given Blood Pressure and weekly cardio duration.
 
 ## Discussion
 
-The \( R^2 \) value of 0.90 suggests that approximately 90% of the variability in the change in heart rate can be explained by the model. The negative coefficient for `Cardio_Duration` strongly suggests that longer durations of cardiovascular exercise are associated with a lower resting heart rate.
+The \( R^2 \) value of 0.90 suggests that approximately 90% of the variability in the change in heart rate can be explained by the model. The negative coefficient for `Cardio_Duration` strongly suggests that longer durations of cardiovascular exercise are associated with a lower resting heart rate. However, due to the presence of confounding variables, the effect on RHR change could not be predicted purley based on cardio duration. Therefore, the model had to be refitted to include the impact of blood pressure as well. 
 
-### Limitations and Future Work
+Here we can model how this new relationship can be used to assist an "average person".
+Using the average values gleaned from the NHAMES data set, a representative average individual was created. To predict how much cardio the average person needs to do to bring down their resting heart rate from 74 to 68, we used our trained model. A reduction from a RHR > 72 to a RHR < 69 has been shown to decrease all-cause mortality risk by 28% based on epidemological data gathered from Zhao et al. 
+Citation: Zhao MX, Zhao Q, Zheng M, Liu T, Li Y, Wang M, Yao S, Wang C, Chen YM, Xue H, Wu S. Effect of resting heart rate on the risk of all-cause death in Chinese patients with hypertension: analysis of the Kailuan follow-up study. BMJ Open. 2020 Mar 10;10(3):e032699. doi: 10.1136/bmjopen-2019-032699. PMID: 32161155; PMCID: PMC7066611.
 
-1. **Unmeasured Confounders**: Factors like genetic predispositions were not considered.
-2. **Causality**: The model establishes correlation but not causation.
+``` python
+# Code snippet to calculate required cardio for average person
+required_change = 74 - 68  # 6 bpm
+m = model.coef_[0]  # Coefficient for 'Cardio_Duration'
+c = model.intercept_  # Intercept
+required_cardio = (required_change - c) / m
+```
+
+The calculated 'required_cardio' gives us an estimate of the amount of cardio an average person needs to do to reduce their heart rate from 74 to 68. This 28% reduction in all-cause mortality risk represents a significant benefit, making the extra cardio a worthwhile investment in long-term health. According to the model, the average person would need to engage in approximately 
+16.06 minutes of moderate-intensity cardiovascular exercise. The code for this calculation is shown below:
+
+``` python
+# Run the multiple linear regression
+X = nhanes_filtered[['Cardio_Duration', 'Systolic_BP', 'Diastolic_BP', 'Caffeine_Usage_mg', 'Fasting_Blood_Sugar', 'Smoking', 'Anti_Hypertensive']]
+y = nhanes_filtered['Change_in_Heart_Rate']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = LinearRegression()
+model.fit(X_train, y_train)
+# Calculate the average values for each variable to represent the 'average person'
+average_person = nhanes_filtered.mean()
+# Compute the required change in heart rate
+required_change = 74 - 68  # 6 beats per minute
+# Coefficient for 'Cardio_Duration' and intercept from the trained model
+m = model.coef_[0]
+c = model.intercept_
+# Calculate required 'Cardio_Duration' for the average person to achieve the target heart rate change
+required_cardio = (required_change - c) / m
+required_cardio
+```
 
 ## Conclusion
 
-This study provides compelling evidence that the duration of cardiovascular exercise has a significant impact on an individual's resting heart rate.
+This study provides compelling evidence that the duration of cardiovascular exercise has a significant impact on an individual's resting heart rate. By combining careful statistical modeling with clinical insights, we can generate actionable recommendations that have the potential to significantly improve public health. Our model suggests that individualized cardio duration recommendations can be more effective than one-size-fits-all guidelines.
+
+## Identifying Colliders
+In the context of this study, a collider would be a variable that is influenced by both the "Cardio Duration" and "Change in Heart Rate."
+For example, if "Fitness Level" is included as a variable in the model. "Fitness Level" could be a collider if both "Cardio Duration" and "Change in Heart Rate" influence it. That is, people who do more cardio are likely fitter, and fitter people generally have a different resting heart rate than less fit people. Colliders can be managed by removing them from the data set preventing any inclusion of possible bias. Conversly, the data could be stratifed until the colliders are segreagated, but in this model that strategy would result in a less precise estimate. Based on the avaliable NHAMES data set, this regression model is the most accurate predictor of how cardio duration affects resting heart rate.
