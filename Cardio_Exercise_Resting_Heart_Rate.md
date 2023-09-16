@@ -102,11 +102,11 @@ sns.pairplot(nhanes_data[Change in Heart Rate vs Fasting Blood Sugar], kind='sca
 
 ## Methodology
 
-### Statistical Model
-
-The model was implemented using Python's scikit-learn library.
+In order to account for the impacts of the various confounding variables, a multivariable linear regression can be used to model how specifically changes in cardio duration affect RHR where all of the other variables can be accounted for using averages gleaned from the NHAMES data set.
 
 #### Model Equation
+
+Here is the equation that can be used to model the relationship.
 
 \[
 	ext{Change\_in\_Heart\_Rate} = \beta_0 + \beta_1 \times 	ext{Cardio\_Duration} + \beta_2 \times 	ext{Systolic\_BP} + \ldots
@@ -118,14 +118,10 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 ```
 
-### Confounding Variables
+To determine the validity of our model equation we can plot the real values gathered from the data set and the predicted values set via the equation. The plot is shown below.
 
-- **Age**
-- **Smoking**
-- **Systolic and Diastolic Blood Pressure**
-- **Caffeine Usage**
-- **Anti-Hypertensive Medication**
-- **Fasting Blood Sugar**
+![Multivariable Regression Scatterplot](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/multivariable_regression_plot.png)
+
 
 ## Results
 
