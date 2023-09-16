@@ -24,6 +24,11 @@ The primary objective is to establish a quantifiable relationship between the du
 
 The data utilized in this analysis originates from the National Health and Nutrition Examination Survey (NHANES). This data set was sourced from open access data provided via the researchers involved in the project. However, it contained a number of variables that can be considered confounding and also might exert an influence on changes in resting heart rate. Additionally, epidemiological data is hard to work with as variables are often presented in different ways either as discrete variables or as continos variables. These variables can also be considered as possible colliders. For example, someone who is training for an endurance race and therefore has a high duration of average weekly moderate-intensity cardio (Variable A) might have a decrease in resting heart rate (Variable B). However, it can be seen that someone who is attempting to run an endurance rate might also quit smoking (Variable C). A person with a high resting heart rate (Variable B) might also decide to quit smoking (Variable C) to improve their health. In this way, A can be said to be potentially causal on B and C while B can also be said to be potentiall causal on C making C a collider. As the NHANES data set is proceed, it will have to be adjusted for the presence of confounding variables and colliders.
 
+The data set used for this project can be downloaded from the link below:
+
+[Download NHANES Data Set](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/NHANES%20Data%20Set.xlsx)
+
+
 ### Variables
 
 1. **Dependent Variable**: Change in Heart Rate
