@@ -122,6 +122,10 @@ To determine the validity of our model equation we can plot the real values gath
 
 ![Multivariable Regression Scatterplot](https://github.com/Cjcapiola/Causal-Question-RHR-and-exercise/raw/main/multivariable_regression_plot.png)
 
+The statistcs of this equation model are shown:
+Mean Squared Error (MSE): 1.55
+R Squared Score: 0.90
+The R Squared score is quite high, indicating a good fit of the model to the data. The model explains a large portion of the variance in the output variable, which in this case is the change in heart rate.
 
 ## Results
 
